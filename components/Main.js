@@ -10,6 +10,17 @@ import {
   faVideo,
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigation } from "@react-navigation/native";
+import Card from "./Card";
+
+let data = [
+  {
+    title: "Google UX Course",
+    date: "Uploaded 28 April",
+  },
+  {
+    title: "Dribble Shot File",
+    date: "Uploaded 15 August",
+  }]
 
 
 export default Main = () => {
@@ -98,28 +109,10 @@ export default Main = () => {
           <Text style={{ color: "grey" }}>View all</Text>
         </View>
         <View style={styles.file}>
-          <View style={styles.files}>
-            <Image
-              source={require("../assets/folder.png")}
-              style={{ width: 70, height: 70 }}
-            />
-            <View style={{paddingRight:60}}>
-              <Text style={{fontSize:17, fontWeight:'bold'}}>Google UX Course</Text>
-              <Text style={{fontSize:10, color:'grey'}}>Uploaded April 28</Text>
-            </View>
-            <FontAwesomeIcon icon={faEllipsisVertical} color={'grey'} />
-          </View>
-          <View style={styles.files}>
-            <Image
-              source={require("../assets/folder.png")}
-              style={{ width: 70, height: 70 }}
-            />
-            <View style={{paddingRight:70}}>
-              <Text style={{fontSize:17, fontWeight:'bold'}}>Dribble Shot File</Text>
-              <Text style={{fontSize:10, color:'grey'}}>Uploaded April 26</Text>
-            </View>
-            <FontAwesomeIcon icon={faEllipsisVertical} color={'grey'} />
-          </View>
+          {data.map(item => <Card
+           title={item.title}
+          date={item.date}>
+          </Card>)}
         </View>
       </View>
   )
@@ -185,14 +178,6 @@ const styles = StyleSheet.create({
   file:{
     paddingVertical:25,
     justifyContent:'space-between',
-    height:240
-  },
-  files: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: 15,
-    backgroundColor: "white",
-    borderRadius: 20,
+    height:260
   },
 });
